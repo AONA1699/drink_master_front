@@ -27,14 +27,15 @@ h2 {
 }
 
 #component {
-    height: 100dvh;
+    height: 100%;
     background: transparent;
 }
 
 section {
     background-image: url("../../../assets/imagenes/tender.jpg");
-    background-size: 100%;
     background-repeat: no-repeat;
+    height: 100dvh;
+    background-size: cover;
 }
 
 .btn-login {
