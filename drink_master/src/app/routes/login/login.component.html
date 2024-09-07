@@ -1,45 +1,44 @@
-<div class="container vh-100 d-flex justify-content-center align-items-center">
-    <div class="row w-100">
-      <div class="col-lg-6 col-md-12 mb-5 text-center">
-        <h2>We make digital products that drive you to stand out.</h2>
-        <p>We write words, take photos, make videos, and interact with artificial intelligence.</p>
-      </div>
-  
+<section>
+  <div class="container" id="component">
+    <div class="d-grid align-items-center align-content-center align-justify-center h-100" id="form-container">
       <div class="col-lg-6 col-md-12">
         <div class="card shadow p-3 mb-5 bg-white rounded">
           <div class="card-body">
-            <h3 class="card-title text-center mb-4">Sign in</h3>
+            <h3 class="card-title text-center mb-4">Iniciar Sesión</h3>
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input id="email" formControlName="usernameOrEmail" class="form-control" placeholder="Email">
-                <div *ngIf="loginForm.controls['usernameOrEmail'].invalid && loginForm.controls['usernameOrEmail'].touched" class="text-danger">
-                  Please enter a valid email.
+                <label for="email" class="form-label">Usuario</label>
+                <input id="email" formControlName="usernameOrEmail" class="form-control" placeholder="Nombre de usuario">
+                <div *ngIf="loginForm.controls['usernameOrEmail'].invalid && loginForm.controls['usernameOrEmail'].touched"
+                  class="text-danger">
+                  Usuario invalidado.
                 </div>
               </div>
-  
+      
               <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password">
-                <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched" class="text-danger">
-                  Password is required.
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" formControlName="password" class="form-control"
+                  placeholder="Ingrese su contraseña">
+                <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched"
+                  class="text-danger">
+                  Requiere Contraseña.
                 </div>
               </div>
-  
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Log in now</button>
+      
+              <div class="d-grid btn-login">
+                <button type="submit" class="btn btn-primary " [disabled]="loginForm.invalid">Iniciar Sesión</button>
               </div>
-  
+      
               <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
             </form>
-  
-            <div class="text-center mt-3">
+      
+            <!-- <div class="text-center mt-3">
               <a href="#">Forgot password?</a>
-            </div>
-
+            </div> -->
+      
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</section>
