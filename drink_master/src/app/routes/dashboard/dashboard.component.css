@@ -1,0 +1,31 @@
+.card{height:100%}
+.card img{
+    height: 200px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    background: #f7f7f7;
+}
+
+.stock {
+    right: 20px;
+    top: 0px;
+    background: #08a71a;
+    color: white;
+    padding: 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.stock-danger{
+    background-color: red!important;
+}
+
+.product-card .card {
+    border: 0px;
+    box-shadow: 10px 10px 12px 0px #00000014;
+    border: 1px solid #00000012;
+}
+
+button{
+    cursor: pointer;
+}

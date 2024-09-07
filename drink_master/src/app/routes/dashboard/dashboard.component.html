@@ -1,1 +1,32 @@
-<p>dashboard works!</p>
+<div class="container mt-4">
+    <div class="row">
+        <!-- Barra superior con nombre de usuario y botón de logout -->
+        <div class="col-12 d-flex justify-content-between align-items-center mb-3">
+            <h4>Bienvenido, <b class="text-black">{{ username }}</b></h4>
+            <button class="btn btn-danger" (click)="logout()">Cerrar sesión</button>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <!-- Mostrar productos como tarjetas (cards) -->
+        <div class="col-md-3 mb-5 position-relative product-card" *ngFor="let product of products">
+            <div class="card mx-2">
+                <img [src]="enviroment.ip_endpoint + 'images/product'  + product.ruta_imagen" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
+                    <p class="card-text">Precio: ${{ product.precio_producto  | thousandSeparator }} COP</p>
+                    <button class="btn btn-success w-100">
+                        Agregar
+                    </button>
+                </div>
+            </div>
+
+            <span 
+            class="card-text position-absolute stock"
+            [ngClass]="{
+                'stock-danger': product.stock_producto < 10
+            }"
+            >Stock: {{ product.stock_producto }}</span>
+        </div>
+    </div>
+</div>

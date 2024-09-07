@@ -41,7 +41,8 @@ export class LoginComponent implements OnInit {
           this.errorMessage = 'Por favor, valide su usuario y contraseña'
         } else {
           const token = data.body.token;
-          this.localstorage.save("token", token)
+          this.localstorage.save("token", token);
+          this.route.navigate(["dashboard"])
         }
 
 
