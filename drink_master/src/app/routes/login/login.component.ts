@@ -9,6 +9,7 @@ import { LocalStorageUtil } from 'src/app/uitls/localstorage';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
+
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string = '';
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService, 
     private fb: FormBuilder,
     private route: Router,
-    private localstorage: LocalStorageUtil
+    private localstorage: LocalStorageUtil,
   ) {
     this.loginForm = this.fb.group({
       usernameOrEmail: ['', [Validators.required]],
@@ -25,11 +26,14 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { usernameOrEmail, password } = this.loginForm.value;
+
       this.loginService.SIGN_IN(usernameOrEmail, password).then( (data:any) => {
         const status = data.status;
 
