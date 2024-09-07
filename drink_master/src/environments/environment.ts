@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ip_endpoint: 'https://00e4-191-92-197-170.ngrok-free.app/backend/'
+  ip_endpoint: 'http://localhost:8080/backend/'
 };
 
 /*
