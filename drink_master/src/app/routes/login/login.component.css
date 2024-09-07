@@ -1,5 +1,42 @@
-.container{background-color:#f5f5f5}
-h2{color:#fff;font-weight:700}
-.card{background-color:#fff}
-.card-title{color:#007bff}
-.btn-primary{background-color:#007bff;border:none}
+.container {
+    background-color: #f5f5f5
+}
+
+h2 {
+    color: #fff;
+    font-weight: 700
+}
+
+.card {
+    background: #ffffff96 !important;
+    border-radius: 45px;
+}
+
+.card-title {
+    color: black
+}
+
+.btn-primary {
+    background-color: black;
+    border: none;
+    color: white;
+}
+
+#form-container {
+    justify-items: center;
+}
+
+#component {
+    height: 100dvh;
+    background: transparent;
+}
+
+section {
+    background-image: url("../../../assets/imagenes/tender.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.btn-login {
+    background-color: black;
+}
