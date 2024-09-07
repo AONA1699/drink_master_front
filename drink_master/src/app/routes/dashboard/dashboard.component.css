@@ -11,13 +11,13 @@
     top: 0px;
     background: #08a71a;
     color: white;
-    padding: 7px;
-    font-size: 12px;
+    padding: 7px 15px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 .stock-danger{
-    background-color: red!important;
+    background-color: #d00f0f !important;
 }
 
 .product-card .card {
