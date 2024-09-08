@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
-import { ThousandSeparatorPipe } from 'src/app/pipe/thousand-separator';
+import { ModalsModule } from 'src/app/modal/cart/card.module';
+import { PipeModule } from 'src/app/pipe/pipe.module';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    ThousandSeparatorPipe  
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    PipeModule,
+    ModalsModule
   ]
 })
 export class DashboardModule { }
