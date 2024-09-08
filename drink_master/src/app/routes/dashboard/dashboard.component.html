@@ -1,52 +1,129 @@
 <header>
- <div class="logo"  >
-    <img src="../../../assets/imagenes/DRINK MASTER-2.jpg" alt="logo_drink">
- </div>
-        
-</header> 
+    <div class="logo">
+        <img src="../../../assets/imagenes/DRINK MASTER-2.jpg" alt="logo_drink">
+    </div>
+
+</header>
 
 <div class="container mt-4 position-relative">
     <div class="row">
         <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
         <div class="col-12 d-flex justify-content-between align-items-center mb-3">
-            <h4>Bienvenido, <b class="text-black">{{ username }}</b></h4>
+            <div class="row col-6 align-content-center align-items-center">
+                <h4 class="col-5">
+                    Bienvenido, <b class="text-black">{{ username }}</b>
+                </h4>
+
+                <a [routerLink]="['/caja']" class="col-5">Ver caja</a>
+            </div>
+
             <div class="d-flex align-items-center">
+
                 <!-- Carrito de compras -->
                 <div class="position-relative cart" (click)="openCart()">
                     Carrito <i class="bi bi-cart-fill" style="font-size: 24px;"></i>
                     <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill">
                         {{ totalItems }}
-                    </span>  
+                    </span>
                 </div>
 
                 <i class="bi bi-slash-lg pe-4 me-2"></i>
 
                 <button class="btn text-danger me-3" (click)="logout()">Cerrar sesión</button>
-                
+
             </div>
         </div>
     </div>
 
-    <div class="row mt-5">
+    <div class="mt-5">
         <!-- Mostrar productos como tarjetas (cards) -->
-        <div class="col-md-3 mb-5 position-relative product-card" *ngFor="let product of products">
-            <div class="card mx-2">
-                <img [src]="enviroment.ip_endpoint + 'images/product'  + product.ruta_imagen" class="card-img-top" alt="Product Image">
-                <div class="card-body">
-                    <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
-                    <p class="card-text">Precio: ${{ product.precio_producto  | thousandSeparator }} COP</p>
-                    <button class="btn btn-success w-100" (click)="addToCart(product)">
-                        Agregar
-                    </button>
+        <section class="row" id="bebidas">
+            <h1 class="mb-3">Bebidas</h1>
+            <hr>
+            <div class="col-md-3 mb-5 position-relative product-card" *ngFor="let product of p_bebidas">
+                <div class="card mx-2">
+                    <img [src]="enviroment.ip_endpoint + 'images/product'  + product.ruta_imagen" class="card-img-top"
+                        alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
+                        <p class="card-text">Precio: ${{ product.precio_producto | thousandSeparator }} COP</p>
+                        <button class="btn btn-success w-100" (click)="addToCart(product)">
+                            Agregar
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <span 
-            class="card-text position-absolute stock"
-            [ngClass]="{
-                'stock-danger': product.stock_producto < 10
-            }"
-            >Stock: {{ product.stock_producto }}</span>
-        </div>
+                <span class="card-text position-absolute stock" [ngClass]="{
+                    'stock-danger': product.stock_producto < 10
+                }">Stock: {{ product.stock_producto }}</span>
+            </div>
+        </section>
+
+        <section class="row" id="cervezas">
+            <h1 class="mb-3">Cervezas</h1>
+            <hr>
+            <div class="col-md-3 mb-5 position-relative product-card" *ngFor="let product of p_cervezas">
+                <div class="card mx-2">
+                    <img [src]="enviroment.ip_endpoint + 'images/product'  + product.ruta_imagen" class="card-img-top"
+                        alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
+                        <p class="card-text">Precio: ${{ product.precio_producto | thousandSeparator }} COP</p>
+                        <button class="btn btn-success w-100" (click)="addToCart(product)">
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <span class="card-text position-absolute stock" [ngClass]="{
+                    'stock-danger': product.stock_producto < 10
+                }">Stock: {{ product.stock_producto }}</span>
+            </div>
+        </section>
+
+        <section class="row" id="cocteles">
+            <h1 class="mb-3">Cócteles</h1>
+            <hr>
+            <div class="col-md-3 mb-5 position-relative product-card" *ngFor="let product of p_cocteles">
+                <div class="card mx-2">
+                    <img [src]="enviroment.ip_endpoint + 'images/product'  + product.ruta_imagen" class="card-img-top"
+                        alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
+                        <p class="card-text">Precio: ${{ product.precio_producto | thousandSeparator }} COP</p>
+                        <button class="btn btn-success w-100" (click)="addToCart(product)">
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <span class="card-text position-absolute stock" [ngClass]="{
+                    'stock-danger': product.stock_producto < 10
+                }">Stock: {{ product.stock_producto }}</span>
+            </div>
+        </section>
+
+        <section class="row" id="licores">
+            <h1 class="mb-3">Licores</h1>
+            <hr>
+            <div class="col-md-3 mb-5 position-relative product-card" *ngFor="let product of p_licores">
+                <div class="card mx-2">
+                    <img [src]="enviroment.ip_endpoint + 'images/product'  + product.ruta_imagen" class="card-img-top"
+                        alt="Product Image">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
+                        <p class="card-text">Precio: ${{ product.precio_producto | thousandSeparator }} COP</p>
+                        <button class="btn btn-success w-100" (click)="addToCart(product)">
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+
+                <span class="card-text position-absolute stock" [ngClass]="{
+                    'stock-danger': product.stock_producto < 10
+                }">Stock: {{ product.stock_producto }}</span>
+            </div>
+        </section>
+
     </div>
 </div>

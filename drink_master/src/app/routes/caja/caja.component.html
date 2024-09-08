@@ -1,0 +1,78 @@
+<header>
+    <div class="logo">
+        <img src="../../../assets/imagenes/DRINK MASTER-2.jpg" alt="logo_drink">
+    </div>
+
+</header>
+
+<div class="container mt-4 position-relative">
+    <div class="row">
+        <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
+        <div class="col-12 d-flex justify-content-between align-items-center mb-3">
+            <div class="row col-6 align-content-center align-items-center">
+                <h4 class="col-5">
+                    Bienvenido, <b class="text-black">{{ username }}</b>
+                </h4>
+
+                <a [routerLink]="['/dashboard']" class="col-5">Ver productos</a>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="btn text-danger me-3" (click)="logout()">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="table-responsive" *ngIf="load_table">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID del Pedido</th>
+                        <th scope="col">Total Venta</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Ver Detalles</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidos_all" [ngClass]="{'bg-success': pedido.isNew}">
+                        <td>{{ pedido.pedido_id }}</td>
+                        <td>{{ pedido.total_pedido | currency:'USD':'symbol':'1.2-2' }}</td>
+                        <td>{{ pedido.username }}</td>
+                        <td>{{ pedido.fecha }}</td>
+                        <td>
+                            <button class="btn btn-primary" (click)="verDetalles(pedido)">Ver Detalles</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+
+        <h2 *ngIf="!load_table">Cargando...</h2>
+    </div>
+</div>
+
+<ng-template #detallesModal let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">Detalles del Pedido</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of detallesPedido">
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>{{ producto.valor | currency:'USD':'symbol':'1.2-2' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

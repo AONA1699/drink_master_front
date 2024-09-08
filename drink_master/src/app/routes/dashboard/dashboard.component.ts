@@ -17,6 +17,10 @@ import { CartService } from 'src/app/services/cart';
 export class DashboardComponent implements OnInit {
 
   products: any[] = [];
+  p_bebidas: any[] = [];
+  p_cervezas: any[] = [];
+  p_cocteles: any[] = [];
+  p_licores: any[] = [];
   username: string | null = '';
   enviroment = environment;
   totalItems: number = 0;
@@ -35,7 +39,10 @@ export class DashboardComponent implements OnInit {
     const is_token = this.localstorage.get("token");
 
     if (is_token) {
-      this.loadProducts();
+      this.loadProducts_bebidas();
+      this.loadProducts_cervezas();
+      this.loadProducts_cocteles();
+      this.loadProducts_licores();
       this.loadUserMe();
     } else {
       this.router.navigate(["/login"]);
@@ -67,11 +74,38 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  loadProducts() {
-    this.productService.getProducts().then((data: any) => {
+  loadProducts_bebidas() {
+    this.productService.getProducts('1').then((data: any) => {
       const status = data.status;
       if (status === 200) {
-        this.products = data.body;
+        this.p_bebidas = data.body;
+      }
+    });
+  }
+
+  loadProducts_cocteles() {
+    this.productService.getProducts('3').then((data: any) => {
+      const status = data.status;
+      if (status === 200) {
+        this.p_cocteles = data.body;
+      }
+    });
+  }
+
+  loadProducts_licores() {
+    this.productService.getProducts('4').then((data: any) => {
+      const status = data.status;
+      if (status === 200) {
+        this.p_licores = data.body;
+      }
+    });
+  }
+
+  loadProducts_cervezas() {
+    this.productService.getProducts('2').then((data: any) => {
+      const status = data.status;
+      if (status === 200) {
+        this.p_cervezas = data.body;
       }
     });
   }

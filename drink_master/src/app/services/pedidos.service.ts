@@ -7,10 +7,10 @@ import { LocalStorageUtil } from '../uitls/localstorage';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class PedidosService {
 
   private apiUrl = '';
-  private services = 'productos';
+  private services = 'get-pedidos';
 
   constructor(
     private http: HttpClient,
@@ -19,12 +19,9 @@ export class ProductService {
     this.apiUrl = environment.ip_endpoint + this.services;
   }
 
-  // Consumir servicio de productos autenticado con Bearer token
-
-
-  async getProducts(categoria: any): Promise<any>{
+  async getPedidos(): Promise<any>{
     const token = this.localstorage.get("token");
-    return this.http.get(this.apiUrl + '?categoria=' + categoria,
+    return this.http.get(this.apiUrl,
       {
         observe: 'response',
         headers: new HttpHeaders({
