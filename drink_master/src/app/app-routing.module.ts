@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./routes/login/login.module').then(m => m.LoginModule) },
   { path: 'dashboard', loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'caja', loadChildren: () => import('./routes/caja/caja.module').then(m => m.CajaModule) },
-  // Otras rutas podrían ir aquí
+  { path: 'inventario', loadChildren: () => import('./routes/inventario/inventario.module').then(m => m.InventarioModule) },
 ];
 
 @NgModule({
