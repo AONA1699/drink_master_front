@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ip_endpoint: 'http://localhost:8080/backend/'
+  ip_endpoint: 'https://danielvegadev.com/backend/'
 };
 
 /*
