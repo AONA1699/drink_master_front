@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', loadChildren: () => import('./routes/login/login.module').then(m => m.LoginModule) },
   { path: 'dashboard', loadChildren: () => import('./routes/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: 'caja', loadChildren: () => import('./routes/caja/caja.module').then(m => m.CajaModule) },
   // Otras rutas podrían ir aquí
 ];
 
