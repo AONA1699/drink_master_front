@@ -4,6 +4,10 @@ import { ProductService } from 'src/app/services/product.service';
 import { UsermeService } from 'src/app/services/userme';
 import { LocalStorageUtil } from 'src/app/uitls/localstorage';
 import { environment } from 'src/environments/environment';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Subscription } from 'rxjs';
+import { CartModalComponent } from 'src/app/modal/cart/cart-modal/cart-modal.component';
+import { CartService } from 'src/app/services/cart';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,46 +19,78 @@ export class DashboardComponent implements OnInit {
   products: any[] = [];
   username: string | null = '';
   enviroment = environment;
+  totalItems: number = 0;
+  private cartSubscription!: Subscription;
 
   constructor(
     private productService: ProductService,
     private userme: UsermeService,
     private localstorage: LocalStorageUtil,
+    private cartService: CartService,
+    private modalService: NgbModal,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     const is_token = this.localstorage.get("token");
 
-    if(is_token){
+    if (is_token) {
       this.loadProducts();
       this.loadUserMe();
     } else {
-      this.router.navigate(["/login"])
+      this.router.navigate(["/login"]);
     }
-    
+
+    this.updateCartItemCount();
+
+    // Suscribirse a las actualizaciones del carrito
+    this.cartSubscription = this.cartService.cartUpdated$.subscribe(
+      (totalItems: number) => {
+        this.totalItems = totalItems; // Actualizar el total de items cuando se modifique el carrito
+      }
+    );
   }
 
-  loadUserMe(){
-    this.userme.gerUserMe().then( (data:any) => {
+  ngOnDestroy(): void {
+    // Cancelar la suscripción cuando el componente se destruya
+    if (this.cartSubscription) {
+      this.cartSubscription.unsubscribe();
+    }
+  }
+
+  loadUserMe() {
+    this.userme.gerUserMe().then((data: any) => {
       const status = data.status;
-      if(status === 200){
-        this.username = data.body.username
+      if (status === 200) {
+        this.username = data.body.username;
       }
-    })
+    });
   }
 
   loadProducts() {
-    this.productService.getProducts().then( (data:any) => {
+    this.productService.getProducts().then((data: any) => {
       const status = data.status;
-      if(status === 200){
+      if (status === 200) {
         this.products = data.body;
       }
-    })
+    });
+  }
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+    this.updateCartItemCount(); // Actualiza el número de items después de agregar al carrito
+  }
+
+  updateCartItemCount() {
+    this.totalItems = this.cartService.getTotalItems();
+  }
+
+  openCart() {
+    this.modalService.open(CartModalComponent, { size: 'lg' });
   }
 
   logout() {
-    localStorage.removeItem('token');  // Eliminar el token del localStorage
+    localStorage.removeItem('token');  // Eliminar el token del LocalStorage
     localStorage.removeItem('username');  // Eliminar el nombre de usuario
     this.router.navigate(['/login']);  // Redirigir al login
   }

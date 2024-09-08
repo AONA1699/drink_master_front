@@ -29,3 +29,18 @@
 button{
     cursor: pointer;
 }
+
+.cart{
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+.bi-cart-fill {
+    font-size: 24px;
+  }
+  
+  .badge {
+    font-size: 14px;
+    padding: 5px;
+  }
+  

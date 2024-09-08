@@ -1,9 +1,22 @@
-<div class="container mt-4">
+<div class="container mt-4 position-relative">
     <div class="row">
-        <!-- Barra superior con nombre de usuario y botón de logout -->
+        <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
         <div class="col-12 d-flex justify-content-between align-items-center mb-3">
             <h4>Bienvenido, <b class="text-black">{{ username }}</b></h4>
-            <button class="btn btn-danger" (click)="logout()">Cerrar sesión</button>
+            <div class="d-flex align-items-center">
+                <!-- Carrito de compras -->
+                <div class="position-relative cart" (click)="openCart()">
+                    Carrito <i class="bi bi-cart-fill" style="font-size: 24px;"></i>
+                    <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill">
+                        {{ totalItems }}
+                    </span>  
+                </div>
+
+                <i class="bi bi-slash-lg pe-4 me-2"></i>
+
+                <button class="btn text-danger me-3" (click)="logout()">Cerrar sesión</button>
+                
+            </div>
         </div>
     </div>
 
@@ -15,7 +28,7 @@
                 <div class="card-body">
                     <h5 class="card-title fw-bold">{{ product.nombre_producto }}</h5>
                     <p class="card-text">Precio: ${{ product.precio_producto  | thousandSeparator }} COP</p>
-                    <button class="btn btn-success w-100">
+                    <button class="btn btn-success w-100" (click)="addToCart(product)">
                         Agregar
                     </button>
                 </div>

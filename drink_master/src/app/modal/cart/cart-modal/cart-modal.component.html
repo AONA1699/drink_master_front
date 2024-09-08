@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h5 class="modal-title">Carrito de compras</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+    <div *ngIf="cartItems.length === 0">
+        <p>No hay productos en el carrito.</p>
+    </div>
+    <div *ngIf="cartItems.length > 0">
+        <div *ngFor="let item of cartItems" class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <img [src]="enviroment.ip_endpoint + 'images/product'  + item.ruta_imagen" alt="" width="80px">
+                <h6>{{ item.nombre_producto }}</h6>
+                <p>Cantidad:
+                    <input type="number" [(ngModel)]="item.quantity"
+                        (change)="onQuantityChange(item.producto_id, item.quantity)" min="1"
+                        class="form-control d-inline-block w-auto">
+                </p>
+                <p>Precio total: ${{ item.precio_producto * item.quantity | thousandSeparator }} COP</p>
+            </div>
+            <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.producto_id)">Eliminar</button>
+        </div>
+        <hr>
+        <p><b>Total a pagar: ${{ totalCartPrice | thousandSeparator }} COP</b></p>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cerrar</button>
+    <button type="button" class="btn btn-primary">Proceder al pago</button>
+</div>
