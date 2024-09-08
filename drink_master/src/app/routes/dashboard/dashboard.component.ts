@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   p_cervezas: any[] = [];
   p_cocteles: any[] = [];
   p_licores: any[] = [];
-  username: string | null = '';
+  username: any;
   enviroment = environment;
   totalItems: number = 0;
   private cartSubscription!: Subscription;
@@ -76,7 +76,7 @@ export class DashboardComponent implements OnInit {
     this.userme.gerUserMe().then((data: any) => {
       const status = data.status;
       if (status === 200) {
-        this.username = data.body.username;
+        this.username = data.body;
       }
     });
   }

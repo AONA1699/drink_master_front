@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InventarioRoutingModule } from './inventario-routing.module';
 import { InventarioComponent } from './inventario.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { InventarioComponent } from './inventario.component';
   ],
   imports: [
     CommonModule,
-    InventarioRoutingModule
+    InventarioRoutingModule,
+    ReactiveFormsModule,
+    FormsModule  
   ]
 })
 export class InventarioModule { }

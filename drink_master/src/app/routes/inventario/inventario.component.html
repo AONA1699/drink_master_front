@@ -9,14 +9,23 @@
     <div class="row">
         <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
         <div class="col-12 d-flex justify-content-between align-items-center mb-3">
-            <div class="row col-10 align-content-center align-items-center">
+            <div class="row col-7 align-content-center align-items-center">
                 <h4 class="col-auto">
-                    Bienvenido, <b class="text-black">{{ username }}</b>
+                    Bienvenido, <b class="text-black">{{ username.username }}</b>
                 </h4>
 
-                <a [routerLink]="['/caja']" class="col-auto">Ver caja</a>
-                <a [routerLink]="['/inventario']" class="col-auto">Ver inventario</a>
-                <a [routerLink]="['/dashboard']" class="col-auto">Ver productos</a>
+                <a 
+                [routerLink]="['/caja']" 
+                class="col-auto" 
+                *ngIf="username.rol_usuario == '1'">Ver caja</a>
+                <a 
+                [routerLink]="['/inventario']" 
+                class="col-auto"
+                *ngIf="username.rol_usuario == '1'"
+                >Ver inventario</a>
+                <a 
+                [routerLink]="['/dashboard']" 
+                class="col-auto">Ver productos</a>
             </div>
 
             <div class="d-flex align-items-center">
@@ -30,148 +39,119 @@
     </div>
 
     <h1>Inventario</h1>
-    
+
     <div class="inventory-category-container"></div>
 
-        <!-- Bloque Bebidas -->
-        <div class="category-block">
-            <h2>Bebidas</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Stock</th>
-                        <th>Ingresar</th>
-                        <th>Fecha Ingreso</th>
-                        <th>Total</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Agua</td>
-                        <td>20</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>20</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Jugo de Naranja</td>
-                        <td>10</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>10</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Bloque Cervezas -->
-        <div class="category-block">
-            <h2>Cervezas</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Stock</th>
-                        <th>Ingresar</th>
-                        <th>Fecha Ingreso</th>
-                        <th>Total</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Cerveza Corona</td>
-                        <td>15</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>15</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Cerveza Heineken</td>
-                        <td>12</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>12</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Bloque Cócteles -->
-        <div class="category-block">
-            <h2>Cócteles</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Stock</th>
-                        <th>Ingresar</th>
-                        <th>Fecha Ingreso</th>
-                        <th>Total</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mojito</td>
-                        <td>10</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>10</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Margarita</td>
-                        <td>8</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>8</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Bloque Licores -->
-        <div class="category-block">
-            <h2>Licores</h2>
-            <table class="inventory-table">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Stock</th>
-                        <th>Ingresar</th>
-                        <th>Fecha Ingreso</th>
-                        <th>Total</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ron</td>
-                        <td>5</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>5</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                    <tr>
-                        <td>Whisky</td>
-                        <td>7</td>
-                        <td><input type="number" min="0" placeholder="Cantidad"></td>
-                        <td><input type="date"></td>
-                        <td>7</td>
-                        <td><button class="add-btn">Agregar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+    <!-- Bloque Bebidas -->
+    <div class="category-block">
+        <h2>Bebidas</h2>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Ingresar</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Total</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of p_bebidas">
+                    <td>{{ product.nombre_producto }}</td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><input type="number" min="0" placeholder="Cantidad" [(ngModel)]="product.cantidad_a_agregar">
+                    </td>
+                    <td><input type="date"></td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><button class="add-btn" (click)="upStockProduct(product)">Agregar</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
+    <!-- Bloque Cervezas -->
+    <div class="category-block">
+        <h2>Cervezas</h2>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Ingresar</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Total</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of p_cervezas">
+                    <td>{{ product.nombre_producto }}</td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><input type="number" min="0" placeholder="Cantidad" [(ngModel)]="product.cantidad_a_agregar">
+                    </td>
+                    <td><input type="date"></td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><button class="add-btn" (click)="upStockProduct(product)">Agregar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bloque Cócteles -->
+    <div class="category-block">
+        <h2>Cócteles</h2>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Ingresar</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Total</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of p_cocteles">
+                    <td>{{ product.nombre_producto }}</td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><input type="number" min="0" placeholder="Cantidad" [(ngModel)]="product.cantidad_a_agregar">
+                    </td>
+                    <td><input type="date"></td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><button class="add-btn" (click)="upStockProduct(product)">Agregar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bloque Licores -->
+    <div class="category-block">
+        <h2>Licores</h2>
+        <table class="inventory-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Ingresar</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Total</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of p_licores">
+                    <td>{{ product.nombre_producto }}</td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><input type="number" min="0" placeholder="Cantidad" [(ngModel)]="product.cantidad_a_agregar">
+                    </td>
+                    <td><input type="date"></td>
+                    <td>{{ product.stock_producto }}</td>
+                    <td><button class="add-btn" (click)="upStockProduct(product)">Agregar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

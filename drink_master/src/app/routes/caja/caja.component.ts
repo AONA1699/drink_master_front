@@ -11,7 +11,7 @@ import { UsermeService } from 'src/app/services/userme';
 })
 export class CajaComponent implements OnInit, OnDestroy  {
 
-  username = '';
+  username: any;
   pedidos_all: any = [];
   detallesPedido: any[] = [];
   previousPedidos: any[] = [];
@@ -86,7 +86,7 @@ export class CajaComponent implements OnInit, OnDestroy  {
     this.userme.gerUserMe().then((data: any) => {
       const status = data.status;
       if (status === 200) {
-        this.username = data.body.username;
+        this.username = data.body;
       }
     });
   }
