@@ -8,6 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 import { CartModalComponent } from 'src/app/modal/cart/cart-modal/cart-modal.component';
 import { CartService } from 'src/app/services/cart';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,9 +33,15 @@ export class DashboardComponent implements OnInit {
     private localstorage: LocalStorageUtil,
     private cartService: CartService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private viewportScroller: ViewportScroller,
+    
   ) {}
 
+  
+  scrollTo(anchor: string): void {
+    this.viewportScroller.scrollToAnchor(anchor);
+  }
   ngOnInit(): void {
     const is_token = this.localstorage.get("token");
 

@@ -5,7 +5,7 @@
 
 </header>
 
-<div class="container mt-4 position-relative">
+<div class="container mt-4 position-relative " id="inicio">
     <div class="row">
         <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
         <div class="col-12 d-flex justify-content-between align-items-center mb-3">
@@ -36,6 +36,18 @@
             </div>
         </div>
     </div>
+
+    <nav class="bajar">
+        <a (click)="scrollTo('bebidas')">Bebidas</a>
+        <a (click)="scrollTo('cervezas')">Cerveza</a>
+        <a (click)="scrollTo('cocteles')">Cocteles</a>
+        <a (click)="scrollTo('licores')">Licores</a>
+      </nav>
+
+
+    <button class="fixed-button">
+        <a (click)="scrollTo('inicio')">Inicio</a>
+    </button>
 
     <div class="mt-5">
         <!-- Mostrar productos como tarjetas (cards) -->
