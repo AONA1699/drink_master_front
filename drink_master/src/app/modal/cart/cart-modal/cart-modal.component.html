@@ -23,10 +23,17 @@
             <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.producto_id)">Eliminar</button>
         </div>
         <hr>
-        <p class="total">Total a pagar: <strong>${{ totalCartPrice | thousandSeparator }}</strong> COP</p>
+
+         <p class="total">Total a pagar: <strong>${{ totalCartPrice | thousandSeparator }}</strong> COP</p>
+
+        <div class="alert alert-success" role="alert" *ngIf="success_load_pedido">
+            Se ha enviado correctamente el pedido a ventas
+        </div>
+
     </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cerrar</button>
-    <button type="button" class="btn btn-primary">Proceder al pago</button>
+    <button type="button" class="btn btn-primary" (click)="proceedToCheckout()">Proceder al pago</button>
+
 </div>

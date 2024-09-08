@@ -50,6 +50,10 @@ export class CartService {
     return this.cart;
   }
 
+  clearCart() {
+    this.cart = [];
+    this.notifyCartUpdate();
+  }
   // Modificar la cantidad de un producto en el carrito
   updateQuantity(producto_id: number, quantity: number, notify : boolean) {
     const existingProduct = this.cart.find((item) => item.producto_id === producto_id);
