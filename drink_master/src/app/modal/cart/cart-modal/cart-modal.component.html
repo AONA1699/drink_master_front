@@ -7,21 +7,23 @@
         <p>No hay productos en el carrito.</p>
     </div>
     <div *ngIf="cartItems.length > 0">
-        <div *ngFor="let item of cartItems" class="d-flex justify-content-between align-items-center mb-3">
-            <div>
+        <div *ngFor="let item of cartItems" class="d-flex justify-content-between align-items-center mb-3 item_cart">
+            <div class="item-cdr">
                 <img [src]="enviroment.ip_endpoint + 'images/product'  + item.ruta_imagen" alt="" width="80px">
-                <h6>{{ item.nombre_producto }}</h6>
-                <p>Cantidad:
-                    <input type="number" [(ngModel)]="item.quantity"
-                        (change)="onQuantityChange(item.producto_id, item.quantity)" min="1"
-                        class="form-control d-inline-block w-auto">
-                </p>
-                <p>Precio total: ${{ item.precio_producto * item.quantity | thousandSeparator }} COP</p>
+                <div>
+                    <h6>{{ item.nombre_producto }}</h6>
+                    <p>Cantidad:
+                        <input type="number" [(ngModel)]="item.quantity"
+                            (change)="onQuantityChange(item.producto_id, item.quantity)" min="1"
+                            class="form-control d-inline-block w-auto">
+                    </p>
+                    <p>Precio total: ${{ item.precio_producto * item.quantity | thousandSeparator }} COP</p>
+                </div>
             </div>
             <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.producto_id)">Eliminar</button>
         </div>
         <hr>
-        <p><b>Total a pagar: ${{ totalCartPrice | thousandSeparator }} COP</b></p>
+        <p class="total">Total a pagar: <strong>${{ totalCartPrice | thousandSeparator }}</strong> COP</p>
     </div>
 </div>
 <div class="modal-footer">
