@@ -14,6 +14,7 @@ export class CartModalComponent implements OnInit {
   cartItems: any[] = [];
   totalCartPrice: number = 0;
   enviroment = environment;
+  success_load_pedido = false;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -41,23 +42,35 @@ export class CartModalComponent implements OnInit {
   // Cuando el usuario cambia la cantidad de un producto
   onQuantityChange(producto_id: number, quantity: number) {
     if (quantity > 0) {
+      // Actualizar la cantidad en el carrito
       this.cartService.updateQuantity(producto_id, quantity, false);
+      
+      // Buscar el producto en el carrito y actualizar 'cantidades_compradas'
+      const productInCart = this.cartItems.find(item => item.producto_id === producto_id);
+      if (productInCart) {
+        productInCart.cantidades_compradas = quantity;
+      }
+      
       this.updateCartPrice(); // Recalcular el total
     }
   }
 
+
   proceedToCheckout() {
-
-
-    const body = {
-      carrito: this.cartItems,
-      total_pedido: this.totalCartPrice
-    };
     
-    this.caja.CAJA(this.cartItems, this.totalCartPrice, 1).then( (data:any) => {
-      console.log(data)
+    this.caja.CAJA(this.cartItems, this.totalCartPrice).then( (data:any) => {
+      let status = data.status;
+      
+      if(status == 201) { 
+        this.success_load_pedido = true;
+        setTimeout(() => {
+          this.success_load_pedido = false;
+          this.activeModal.close();
+          this.cartService.clearCart();
+        }, 4000);
+        
+      }
     })
 
-    
   }
 }

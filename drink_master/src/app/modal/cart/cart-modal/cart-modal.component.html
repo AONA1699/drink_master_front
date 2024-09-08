@@ -22,6 +22,10 @@
         </div>
         <hr>
         <p><b>Total a pagar: ${{ totalCartPrice | thousandSeparator }} COP</b></p>
+
+        <div class="alert alert-success" role="alert" *ngIf="success_load_pedido">
+            Se ha enviado correctamente el pedido a ventas
+        </div>
     </div>
 </div>
 <div class="modal-footer">

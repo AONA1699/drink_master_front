@@ -20,9 +20,9 @@ export class CajaService {
   }
 
 
-  async CAJA(carrito: any, total_pedido: any, rol_usuario:any): Promise<any>{
+  async CAJA(carrito: any, total_pedido: any): Promise<any>{
     const token = this.localstorage.get("token"); 
-    const body = { carrito, total_pedido, rol_usuario };
+    const body = { carrito, total_pedido };
     return this.http.post(this.apiUrl, body,
       {
         observe: 'response',
