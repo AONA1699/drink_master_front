@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
+import { CajaService } from 'src/app/services/caja.service';
 
 @Component({
   selector: 'app-cart-modal',
@@ -16,7 +17,8 @@ export class CartModalComponent implements OnInit {
 
   constructor(
     public activeModal: NgbActiveModal,
-    private cartService: CartService
+    private cartService: CartService,
+    private caja: CajaService
   ) { }
 
   ngOnInit(): void {
@@ -42,5 +44,20 @@ export class CartModalComponent implements OnInit {
       this.cartService.updateQuantity(producto_id, quantity, false);
       this.updateCartPrice(); // Recalcular el total
     }
+  }
+
+  proceedToCheckout() {
+
+
+    const body = {
+      carrito: this.cartItems,
+      total_pedido: this.totalCartPrice
+    };
+    
+    this.caja.CAJA(this.cartItems, this.totalCartPrice, 1).then( (data:any) => {
+      console.log(data)
+    })
+
+    
   }
 }
