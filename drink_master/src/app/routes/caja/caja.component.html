@@ -9,12 +9,15 @@
     <div class="row">
         <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
         <div class="col-12 d-flex justify-content-between align-items-center mb-3">
-            <div class="row col-6 align-content-center align-items-center">
-                <h4 class="col-5">
+
+            <div class="row col-12 align-content-center align-items-center">
+                <h4 class="col-auto">
                     Bienvenido, <b class="text-black">{{ username }}</b>
                 </h4>
 
-                <a [routerLink]="['/dashboard']" class="col-5">Ver productos</a>
+                <a [routerLink]="['/caja']" class="col-auto">Ver caja</a>
+                <a [routerLink]="['/inventario']" class="col-auto">Ver inventario</a>
+                <a [routerLink]="['/dashboard']" class="col-auto">Ver productos</a>
             </div>
             <div class="d-flex align-items-center">
                 <button class="btn text-danger me-3" (click)="logout()">Cerrar sesión</button>

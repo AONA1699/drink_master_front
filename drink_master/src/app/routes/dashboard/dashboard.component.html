@@ -9,12 +9,14 @@
     <div class="row">
         <!-- Barra superior con nombre de usuario, botón de logout y carrito -->
         <div class="col-12 d-flex justify-content-between align-items-center mb-3">
-            <div class="row col-6 align-content-center align-items-center">
-                <h4 class="col-5">
+            <div class="row col-10 align-content-center align-items-center">
+                <h4 class="col-auto">
                     Bienvenido, <b class="text-black">{{ username }}</b>
                 </h4>
 
-                <a [routerLink]="['/caja']" class="col-5">Ver caja</a>
+                <a [routerLink]="['/caja']" class="col-auto">Ver caja</a>
+                <a [routerLink]="['/inventario']" class="col-auto">Ver inventario</a>
+                <a [routerLink]="['/dashboard']" class="col-auto">Ver productos</a>
             </div>
 
             <div class="d-flex align-items-center">
@@ -23,7 +25,7 @@
                 <div class="position-relative cart" (click)="openCart()">
                     Carrito <i class="bi bi-cart-fill" style="font-size: 24px;"></i>
                     <span class="badge bg-primary position-absolute top-0 start-100 translate-middle rounded-pill">
-                        {{ totalItems }}
+                        {{ totalItems }} 
                     </span>
                 </div>
 
