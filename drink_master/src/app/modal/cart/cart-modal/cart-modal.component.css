@@ -1,0 +1,19 @@
+.item_cart{
+    padding: 15px 10px 10px 15px;
+    border: 1px solid #d3cece6e;
+    background-color: #d3cece6e;
+    border-radius: 25px;
+    display: flex;
+}
+
+.item-cdr{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.total{
+    font-size: 1.5em;
+}
