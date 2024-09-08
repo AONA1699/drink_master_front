@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  ip_endpoint: 'https://danielvegadev.com/backend/'
 };
